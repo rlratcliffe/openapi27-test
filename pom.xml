@@ -16,12 +16,20 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <spring-boot.version>2.3.2.RELEASE</spring-boot.version>
-        <camel.version>3.7.1</camel.version>
+        <spring-boot.version>2.7.18</spring-boot.version>
+        <camel.version>3.22.1</camel.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!-- Override Log4j2, related to https://github.com/spring-projects/spring-boot/issues/33450 -->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-bom</artifactId>
+                <version>3.0.0-beta1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <!-- Spring Boot BOM -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -76,12 +84,11 @@
         <dependency>
             <groupId>com.lmax</groupId>
             <artifactId>disruptor</artifactId>
-            <version>3.4.2</version>
+            <version>4.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-layout-template-json</artifactId>
-            <version>2.14.0</version>
         </dependency>
 
         <!-- Camel -->
@@ -99,22 +106,11 @@
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
-            <artifactId>camel-datasonnet</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
             <artifactId>camel-http</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-endpointdsl</artifactId>
-        </dependency>
-
-        <!-- ms3-inc Camel Rest Extensions -->
-        <dependency>
-            <groupId>com.ms3-inc.tavros</groupId>
-            <artifactId>camel-rest-extensions</artifactId>
-            <version>0.1.4</version>
         </dependency>
 
         <dependency>
@@ -123,17 +119,6 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- Test -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-test-spring</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>

@@ -1,19 +1,16 @@
 package dev.rlratcliffe;
 
-import javax.annotation.Generated;
-
+import org.apache.camel.builder.endpoint.EndpointRouteBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import com.ms3_inc.tavros.extensions.rest.OpenApi4jValidator;
 
 /**
  * Generated routes are based on the OpenAPI document in src/generated/api folder.
  *
  * @author Maven Archetype (camel-oas-archetype)
  */
-@Generated("com.ms3_inc.camel.archetype.oas")
 @Component
-public class RoutesGenerated extends BaseRestRouteBuilder {
+public class RoutesGenerated extends EndpointRouteBuilder {
     private final String contextPath;
 
     public RoutesGenerated(@Value("${camel.rest.context-path}") String contextPath) {
@@ -31,12 +28,7 @@ public class RoutesGenerated extends BaseRestRouteBuilder {
      */
     @Override
     public void configure() throws Exception {
-        super.configure();
-
         restConfiguration().component("undertow");
-
-        interceptFrom()
-            .process(new OpenApi4jValidator("greeting-sample.yaml", contextPath));
 
         rest()
             .get("/hello")
