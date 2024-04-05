@@ -16,8 +16,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <spring-boot.version>2.7.18</spring-boot.version>
-        <camel.version>3.22.1</camel.version>
+        <spring-boot.version>3.0.2</spring-boot.version>
+        <camel.version>4.0.0-M1</camel.version>
     </properties>
 
     <dependencyManagement>
